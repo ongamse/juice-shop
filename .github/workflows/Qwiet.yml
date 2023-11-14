@@ -44,6 +44,6 @@ jobs:
     - name: Analyze application with Qwiet
       #run: ${GITHUB_WORKSPACE}/sl analyze --app JuiceShop --tag branch=${{ github.head_ref || steps.extract_branch.outputs.branch }} --js $(pwd) --package-json package.json
       #run: python shiftleftmulti.py
-      run: guesslang
+      run: guesslang .
       env:
         SHIFTLEFT_ACCESS_TOKEN: ${{ secrets.SHIFTLEFT_ACCESS_TOKEN }}
