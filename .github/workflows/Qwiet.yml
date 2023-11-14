@@ -25,7 +25,9 @@ jobs:
       run: |
         #pip install -r requirements.txt
         #python3 -m pip install tensorflow[and-cuda]
+        pip install --upgrade pip
         python3 -m pip install tensorflow
+
     - name: Install Guesslang
       run: pip3 install guesslang
       
