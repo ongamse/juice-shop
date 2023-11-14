@@ -45,6 +45,6 @@ def analyze_repository(repository_path):
             run_analysis(language)
 
 # Example usage:
-repository_path = *
+repository_path = $(pwd)
 analyze_repository(repository_path)
 
