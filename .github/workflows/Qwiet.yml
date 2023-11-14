@@ -30,13 +30,13 @@ jobs:
     - uses: ruby/setup-ruby@ec02537da5712d66d4d50a0f33b7eb52773b5ed1
       with:
         ruby-version: '3.2.1' # Not needed with a .ruby-version file
+    - run: gem install github-linguist
     - run: bundle install
     - run: bundle exec rake
     
     - name: Install dependencies
       run: |
         apt-get install build-essential cmake pkg-config libicu-dev zlib1g-dev libcurl4-openssl-dev libssl-dev ruby-dev
-        gem install github-linguist
         #pip install -r requirements.txt
         #python3 -m pip install tensorflow[and-cuda]
         #pip install --upgrade pip
