@@ -19,7 +19,7 @@ jobs:
     - uses: actions/checkout@v2
     
     - name: Install Guesslang
-      run: |pip install guesslang
+      run: pip install guesslang
       
     - name: Download the Qwiet CLI and set permissions
       run: |
