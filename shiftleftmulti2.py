@@ -17,15 +17,15 @@ def process_language_results(file_path):
             if percentage > 25 and language.lower() == 'Java':
                 print(f"Running command for Java ({percentage}%): {size}")
                 # Replace the following line with your actual shell command
-                subprocess.run(['sl analyze --app guessjava --java', size])
+                result = subprocess.run(['sl analyze', '--app guessjava', '--java'])
             elif percentage > 25 and language.lower() == 'JavaScript':
                 print(f"Running command for Javascript ({percentage}%): {size}")
                 # Replace the following line with your actual shell command
-                subprocess.run(['sl analyze --app guessjs --js', size])
+                result = subprocess.run(['sl analyze', '--app guessjs', '--js'])
             elif percentage > 25 and language.lower() == 'TypeScript':
                 print(f"Running command for TypeScript ({percentage}%): {size}")
                 # Replace the following line with your actual shell command
-                subprocess.run(['sl analyze --app guessts --js', size])                
+                result = subprocess.run(['sl analyze', '--app guessts', '--js'])                
 # Example usage
 file_path = 'languages.txt'
 process_language_results(file_path)
