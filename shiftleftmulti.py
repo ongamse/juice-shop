@@ -33,7 +33,7 @@ def run_analysis(language):
 
 def analyze_repository(repository_path):
     # Initialize the guesslang model
-    model = guesslang.load_model()
+    # model = guesslang.load_model()
 
     # Detect languages in the repository
     languages = model.predict_path(repository_path)
