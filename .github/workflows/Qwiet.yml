@@ -34,8 +34,8 @@ jobs:
       with:
         ruby-version: '3.2.1' # Not needed with a .ruby-version file
     - run: gem install github-linguist
-    - run: bundle install
-    - run: bundle exec rake
+    #- run: bundle install
+    #- run: bundle exec rake
     
     - name: Install dependencies
       run: |
