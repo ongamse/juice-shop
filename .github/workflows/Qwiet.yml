@@ -17,7 +17,13 @@ jobs:
     runs-on: ubuntu-20.04
     steps:
     - uses: actions/checkout@v2
-    
+    - name: Set up Python 3.11
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.11
+    - name: Install CI dependencies
+      run: |
+        python -m pip install --upgrade pip
     - name: Install Guesslang
       run: pip install guesslang
       
