@@ -27,23 +27,25 @@ jobs:
         java-version: 1.8
 
     - uses: actions/checkout@v4
-    - name: Set up Python 3.9
-      uses: actions/setup-python@v4
+    - uses: ruby/setup-ruby@ec02537da5712d66d4d50a0f33b7eb52773b5ed1
       with:
-        python-version: 3.9
-    - name: Install CI dependencies
+        ruby-version: '3.2.2' # Not needed with a .ruby-version file
+    - run: bundle install
+    - run: bundle exec rake
+    
+    - name: Install dependencies
       run: |
-        pip install -r requirements.txt
+        apt-get install build-essential cmake pkg-config libicu-dev zlib1g-dev libcurl4-openssl-dev libssl-dev ruby-dev
+        gem install github-linguist
+        #pip install -r requirements.txt
         #python3 -m pip install tensorflow[and-cuda]
         #pip install --upgrade pip
         #pip3 install --upgrade tensorflow-2.5.0
-
-    - name: Setup Guesslang
-      run: pip3 install guesslang
-      
+    
     - name: Analyze application with Qwiet
       #run: ${GITHUB_WORKSPACE}/sl analyze --app JuiceShop --tag branch=${{ github.head_ref || steps.extract_branch.outputs.branch }} --js $(pwd) --package-json package.json
       #run: python shiftleftmulti.py
-      run: guesslang .
+      #run: guesslang .
+      run: github-linguist --json
       env:
         SHIFTLEFT_ACCESS_TOKEN: ${{ secrets.SHIFTLEFT_ACCESS_TOKEN }}
