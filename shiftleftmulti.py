@@ -38,7 +38,7 @@ def run_analysis(language):
         print(f"Error: {e}")
 
 def analyze_code(code):
-    language, confidence = detect_language(code)
+    language, confidence = detect_language(repository_path)
     if confidence > 0.25:
         print(f"Detected language: {language} with confidence: {confidence}")
         run_analysis(language)
