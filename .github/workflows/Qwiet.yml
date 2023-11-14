@@ -16,6 +16,16 @@ jobs:
   ngsast-build:
     runs-on: ubuntu-20.04
     steps:
+    - name: Download the Qwiet CLI and set permissions
+      run: |
+        curl https://cdn.shiftleft.io/download/sl > ${GITHUB_WORKSPACE}/sl && chmod a+rx ${GITHUB_WORKSPACE}/sl
+
+    # Qwiet requires Java 1.8
+    - name: Set up Java
+      uses: actions/setup-java@v1.4.3
+      with:
+        java-version: 1.8
+
     - uses: actions/checkout@v2
     - name: Set up Python 3.9
       uses: actions/setup-python@v2
@@ -31,16 +41,6 @@ jobs:
     - name: Setup Guesslang
       run: pip3 install guesslang
       
-    - name: Download the Qwiet CLI and set permissions
-      run: |
-        curl https://cdn.shiftleft.io/download/sl > ${GITHUB_WORKSPACE}/sl && chmod a+rx ${GITHUB_WORKSPACE}/sl
-
-    # Qwiet requires Java 1.8
-    - name: Set up Java
-      uses: actions/setup-java@v1.4.3
-      with:
-        java-version: 1.8
-
     - name: Analyze application with Qwiet
       #run: ${GITHUB_WORKSPACE}/sl analyze --app JuiceShop --tag branch=${{ github.head_ref || steps.extract_branch.outputs.branch }} --js $(pwd) --package-json package.json
       run: python shiftleftmulti.py
