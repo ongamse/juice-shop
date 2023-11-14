@@ -51,5 +51,6 @@ jobs:
       run: github-linguist > languages.txt
     - name: Analyze application with Qwiet2   
       run: python shiftleftmulti2.py
+      shell: sh
       env:
         SHIFTLEFT_ACCESS_TOKEN: ${{ secrets.SHIFTLEFT_ACCESS_TOKEN }}
