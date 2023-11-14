@@ -43,6 +43,6 @@ def analyze_repository(repository_path):
             run_analysis(language)
 
 # Example usage:
-repository_path =
-analyze_repository(repository_path)
+#repository_path = /
+#analyze_repository(repository_path)
 
