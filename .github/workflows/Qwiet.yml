@@ -23,9 +23,9 @@ jobs:
         python-version: 3.11
     - name: Install CI dependencies
       run: |
-        pip install -r requirements.txt
+        #pip install -r requirements.txt
         #python3 -m pip install tensorflow[and-cuda]
-        #python3 -m pip install tensorflow-2.5.0
+        python3 -m pip install tensorflow
     - name: Install Guesslang
       run: pip3 install guesslang
       
