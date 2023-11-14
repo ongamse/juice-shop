@@ -20,15 +20,15 @@ jobs:
     - name: Set up Python 3.9
       uses: actions/setup-python@v2
       with:
-        python-version: 3.11
-    - name: Install CI dependencies
-      run: |
-        #pip install -r requirements.txt
+        python-version: 3.9
+    #- name: Install CI dependencies
+      #run: |
+        pip install -r requirements.txt
         #python3 -m pip install tensorflow[and-cuda]
         #pip install --upgrade pip
         #pip3 install --upgrade tensorflow-2.5.0
 
-    - name: Install Guesslang
+    - name: Setup Guesslang
       run: pip3 install guesslang
       
     - name: Download the Qwiet CLI and set permissions
