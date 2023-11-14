@@ -17,7 +17,7 @@ jobs:
     runs-on: ubuntu-20.04
     steps:
     - name: Install U Deps
-      run: apt-get install build-essential cmake pkg-config libicu-dev zlib1g-dev libcurl4-openssl-dev libssl-dev ruby-dev
+      run: sudo apt-get install build-essential cmake pkg-config libicu-dev zlib1g-dev libcurl4-openssl-dev libssl-dev ruby-dev
       
     - name: Download the Qwiet CLI and set permissions
       run: |
