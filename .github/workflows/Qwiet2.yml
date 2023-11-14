@@ -29,6 +29,6 @@ jobs:
         java-version: 1.8
 
     - name: Analyze application with Qwiet
-      run: ${GITHUB_WORKSPACE}/sl analyze --app JuiceShopTest --tag branch=${{ github.head_ref || steps.extract_branch.outputs.branch }} --oss-project-dir . --include-tests --js $(pwd)
+      run: ${GITHUB_WORKSPACE}/sl analyze --app JuiceShopTest --tag branch=${{ github.head_ref || steps.extract_branch.outputs.branch }} --oss-project-dir . --include-tests . --js $(pwd)
       env:
         SHIFTLEFT_ACCESS_TOKEN: ${{ secrets.SHIFTLEFT_ACCESS_TOKEN }}
