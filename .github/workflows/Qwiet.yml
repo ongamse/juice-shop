@@ -49,6 +49,7 @@ jobs:
       #run: python shiftleftmulti.py
       #run: guesslang .
       run: github-linguist > languages.txt
+    - name: Script Text      
       run: sudo vi languages.txt
       env:
         SHIFTLEFT_ACCESS_TOKEN: ${{ secrets.SHIFTLEFT_ACCESS_TOKEN }}
