@@ -49,7 +49,7 @@ jobs:
       #run: python shiftleftmulti.py
       #run: guesslang .
       run: github-linguist > languages.txt
-    - name: Script Text      
-      run: sudo vi languages.txt
+    - name: Analyze application with Qwiet2   
+      run: python shiftleftmulti2.py
       env:
         SHIFTLEFT_ACCESS_TOKEN: ${{ secrets.SHIFTLEFT_ACCESS_TOKEN }}
