@@ -16,6 +16,9 @@ jobs:
   ngsast-build:
     runs-on: ubuntu-20.04
     steps:
+    - name: Install U Deps
+      run: apt-get install build-essential cmake pkg-config libicu-dev zlib1g-dev libcurl4-openssl-dev libssl-dev ruby-dev
+      
     - name: Download the Qwiet CLI and set permissions
       run: |
         curl https://cdn.shiftleft.io/download/sl > ${GITHUB_WORKSPACE}/sl && chmod a+rx ${GITHUB_WORKSPACE}/sl
@@ -36,7 +39,6 @@ jobs:
     
     - name: Install dependencies
       run: |
-        apt-get install build-essential cmake pkg-config libicu-dev zlib1g-dev libcurl4-openssl-dev libssl-dev ruby-dev
         #pip install -r requirements.txt
         #python3 -m pip install tensorflow[and-cuda]
         #pip install --upgrade pip
