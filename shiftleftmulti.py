@@ -1,7 +1,13 @@
+
 #!/usr/bin/env python3
 
 import subprocess
 import guesslang
+
+def detect_language(code):
+    classifier = guesslang.Classifier()
+    result = classifier.predict_one(code)
+    return result.language, result.confidence
 
 def run_analysis(language):
     if language == 'Java':
@@ -31,20 +37,13 @@ def run_analysis(language):
     except subprocess.CalledProcessError as e:
         print(f"Error: {e}")
 
-def analyze_repository(repository_path):
-    # Initialize the guesslang model
-    # model = guesslang.load_model()
-
-    # Detect languages in the repository
-    languages = model.predict_path(repository_path)
-
-    # Run analysis for languages with percentages higher than 25%
-    for language, percentage in languages.items():
-        if percentage > 25:
-            print(f"Detected language: {language} - Percentage: {percentage}%")
-            run_analysis(language)
-
+def analyze_code(code):
+    language, confidence = detect_language(code)
+    if confidence > 0.25:
+        print(f"Detected language: {language} with confidence: {confidence}")
+        run_analysis(language)
+    else:
+        print("Unable to confidently detect the language.")
 # Example usage:
-repository_path = "."
-analyze_repository(repository_path)
-
+repository_path = """."""
+analyze_code(repository_path)
