@@ -18,6 +18,12 @@ jobs:
     steps:
     - uses: actions/checkout@v2
 
+    - name: NPM Install
+      run: |
+        npm install
+        rm -rf node_modules
+        rm -rf frontend/dist frontend/node_modules dist build
+    
     - name: Download the Qwiet CLI and set permissions
       run: |
         curl https://cdn.shiftleft.io/download/sl > ${GITHUB_WORKSPACE}/sl && chmod a+rx ${GITHUB_WORKSPACE}/sl
