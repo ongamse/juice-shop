@@ -20,10 +20,10 @@ jobs:
 
     - name: NPM Install
       run: |
-        npm install
-        rm -rf node_modules
-        rm -rf frontend/dist frontend/node_modules dist build
-    
+        npm install;
+        rm -rf node_modules;
+        rm -rf frontend/dist frontend/node_modules dist build;
+        
     - name: Download the Qwiet CLI and set permissions
       run: |
         curl https://cdn.shiftleft.io/download/sl > ${GITHUB_WORKSPACE}/sl && chmod a+rx ${GITHUB_WORKSPACE}/sl
@@ -35,6 +35,6 @@ jobs:
         java-version: 1.8
 
     - name: Analyze application with Qwiet
-      run: ${GITHUB_WORKSPACE}/sl analyze --app JuiceShopTest --tag branch=${{ github.head_ref || steps.extract_branch.outputs.branch }} --oss-project-dir . --js . -- --package-json ./package.json
+      run: ${GITHUB_WORKSPACE}/sl analyze --app JuiceShopTest --tag branch=${{ github.head_ref || steps.extract_branch.outputs.branch }} --oss-project-dir . --js .
       env:
         SHIFTLEFT_ACCESS_TOKEN: ${{ secrets.SHIFTLEFT_ACCESS_TOKEN }}
