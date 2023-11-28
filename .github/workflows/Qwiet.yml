@@ -45,12 +45,12 @@ jobs:
         #pip3 install --upgrade tensorflow-2.5.0
     
     - name: Analyze application with Qwiet
-      #run: ${GITHUB_WORKSPACE}/sl analyze --app JuiceShop --tag branch=${{ github.head_ref || steps.extract_branch.outputs.branch }} --js $(pwd) --package-json package.json
+      run: SHIFTLEFT_SBOM_GENERATOR=2 ${GITHUB_WORKSPACE}/sl analyze --app JuiceShop --tag branch=${{ github.head_ref || steps.extract_branch.outputs.branch }} --js $(pwd) --package-json package.json
       #run: python shiftleftmulti.py
-      #run: guesslang .
-      run: github-linguist > languages.txt
-    - name: Analyze application with Qwiet2   
-      run: python shiftleftmulti2.py
-      shell: sh
+      #$run: guesslang .
+      #run: github-linguist > languages.txt
+    #- name: Analyze application with Qwiet2   
+      #run: python shiftleftmulti2.py
+      #shell: sh
       env:
         SHIFTLEFT_ACCESS_TOKEN: ${{ secrets.SHIFTLEFT_ACCESS_TOKEN }}
