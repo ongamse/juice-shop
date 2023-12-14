@@ -29,21 +29,22 @@ jobs:
       with:
         java-version: 1.8
 
-    - uses: actions/checkout@v4
-    - uses: ruby/setup-ruby@ec02537da5712d66d4d50a0f33b7eb52773b5ed1
-      with:
-        ruby-version: '3.2.1' # Not needed with a .ruby-version file
-    - run: gem install github-linguist
+    #- uses: actions/checkout@v4
+    #- uses: ruby/setup-ruby@ec02537da5712d66d4d50a0f33b7eb52773b5ed1
+      #with:
+        #ruby-version: '3.2.1' # Not needed with a .ruby-version file
+    #- run: gem install github-linguist
     #- run: bundle install
     #- run: bundle exec rake
     
-    - name: Install dependencies
-      run: |
+    #- name: Install dependencies
+    #  run: |
         #pip install -r requirements.txt
         #python3 -m pip install tensorflow[and-cuda]
         #pip install --upgrade pip
         #pip3 install --upgrade tensorflow-2.5.0
-    
+    - name: Docker Run
+      run: docker run --rm -v $(pwd):$(pwd) -w $(pwd) -t enjoyelan/qwiet_linguist:latest github-linguist .
     - name: Analyze application with Qwiet
       run: SHIFTLEFT_SBOM_GENERATOR=2 ${GITHUB_WORKSPACE}/sl analyze --app JuiceShop --tag branch=${{ github.head_ref || steps.extract_branch.outputs.branch }} --js $(pwd) --package-json package.json
       #run: python shiftleftmulti.py
