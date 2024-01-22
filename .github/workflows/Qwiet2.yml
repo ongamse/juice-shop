@@ -35,6 +35,8 @@ jobs:
         java-version: 1.8
 
     - name: Analyze application with Qwiet
-      run: SHIFTLEFT_SBOM_GENERATOR=2 ${GITHUB_WORKSPACE}/sl analyze --app JuiceShopTest --verbose --tag branch=${{ github.head_ref || steps.extract_branch.outputs.branch }} --oss-project-dir . --js .
+      #export SHIFTLEFT_SBOM_GENERATOR=2
+      #run: SHIFTLEFT_SBOM_GENERATOR=2 ${GITHUB_WORKSPACE}/sl analyze --app JuiceShopTest --verbose --tag branch=${{ github.head_ref || steps.extract_branch.outputs.branch }} --oss-project-dir . --js .
+      run: QWIET_ENABLE_MULTI_LANGUAGE_ANALYSIS=true ${GITHUB_WORKSPACE}/sl analyze --app JuiceShopTestML
       env:
         SHIFTLEFT_ACCESS_TOKEN: ${{ secrets.SHIFTLEFT_ACCESS_TOKEN }}
