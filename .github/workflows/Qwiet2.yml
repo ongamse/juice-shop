@@ -29,10 +29,11 @@ jobs:
         curl https://cdn.shiftleft.io/download/sl > ${GITHUB_WORKSPACE}/sl && chmod a+rx ${GITHUB_WORKSPACE}/sl
 
     # Qwiet requires Java 1.8
-    - name: Set up Java
-      uses: actions/setup-java@v1.4.3
+    - name: Setup Java JDK
+      uses: actions/setup-java@v3
       with:
-        java-version: 1.8
+        distribution: zulu
+        java-version: 8
 
     - name: Analyze application with Qwiet
       #export SHIFTLEFT_SBOM_GENERATOR=2
