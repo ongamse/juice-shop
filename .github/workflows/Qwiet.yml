@@ -43,10 +43,10 @@ jobs:
         #python3 -m pip install tensorflow[and-cuda]
         #pip install --upgrade pip
         #pip3 install --upgrade tensorflow-2.5.0
-    - name: Docker Run
-      run: docker run --rm -v $(pwd):$(pwd) -w $(pwd) -t enjoyelan/qwiet_linguist:latest github-linguist .
+    #- name: Docker Run
+    #  run: docker run --rm -v $(pwd):$(pwd) -w $(pwd) -t enjoyelan/qwiet_linguist:latest github-linguist .
     - name: Analyze application with Qwiet
-      run: SHIFTLEFT_SBOM_GENERATOR=2 ${GITHUB_WORKSPACE}/sl analyze --app JuiceShop --tag branch=${{ github.head_ref || steps.extract_branch.outputs.branch }} --js $(pwd) --package-json package.json
+      run: ${GITHUB_WORKSPACE}/sl analyze --app JuiceShop --tag branch=${{ github.head_ref || steps.extract_branch.outputs.branch }} --js $(pwd) --package-json package.json
       #run: python shiftleftmulti.py
       #$run: guesslang .
       #run: github-linguist > languages.txt
